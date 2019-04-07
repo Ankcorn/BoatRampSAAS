@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './tailwind.css';
 import Container from './components/Container';
 import Map from './components/Map';
+import { Anchor } from 'react-feather';
 
 async function makeApiCall():Promise<void> {
   const data = await fetch('/.netlify/functions/file');
