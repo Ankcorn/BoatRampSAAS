@@ -10,8 +10,11 @@
   "scripts": {
     "build:css": "postcss src/styles/index.css -o src/tailwind.css",
     "watch:css": "postcss src/styles/index.css -o src/tailwind.css -w",
-    "start": "yarn watch:css & react-scripts start",
-    "build": "yarn build:css && react-scripts build",
+    "lambda:serve": "netlify-lambda serve lambda_src",
+    "lambda:build": "netlify-lambda build lambda_src",
+    "proxy": "node setupProxy.js",
+    "start": "yarn lambda:serve & yarn watch:css & react-scripts start",
+    "build": "yarn lambda:build && yarn build:css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
@@ -23,6 +26,11 @@
   ],
   "devDependencies": {
     "autoprefixer": "^9.5.0",
+    "babel-loader": "^8.0.5",
+    "express": "^4.16.4",
+    "http-proxy-middleware": "^0.19.1",
+    "morgan": "^1.9.1",
+    "netlify-lambda": "^1.4.3",
     "postcss-cli": "^6.1.2",
     "tailwindcss": "^1.0.0-beta.4"
   }

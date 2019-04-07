@@ -3,5 +3,6 @@ ID = "Boat Ramps AAS"
 
 [build]
   base = ""
+  functions = "lambda"
   publish = "build"
   command = "npm run build"
