@@ -1,22 +1,18 @@
-# Technical challenge
+# Boat Ramp AAS
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+To view this demo go to [https://gallant-darwin-b5858a.netlify.com/](https://gallant-darwin-b5858a.netlify.com/)
 
 Before you start developing make sure you install all the dependencies:
 
 ```
-> npm install
+> yarn
 ```
 
 then simply run the project
 
 ```
-> npm start
+> yarn start
 ```
-
-## How to take this test
-
-The is no right or wrong way to do this, we are more interested in the code you write, the development process you use rather than marking your work! Set yourself a time limit and see how get on.
 
 ## Data
 
