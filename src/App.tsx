@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './tailwind.css';
 
-async function makeApiCall() {
+async function makeApiCall():Promise<void> {
   const data = await fetch('/.netlify/functions/file');
   const json = await data.json()
   console.log(json)
