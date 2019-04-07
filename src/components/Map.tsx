@@ -1,5 +1,5 @@
 import React, { useState, SetStateAction } from 'react';
-import ReactMapGL, { ViewStateChangeInfo, ViewState } from 'react-map-gl';
+import ReactMapGL, { ViewState } from 'react-map-gl';
 
 function Map() {
   const [mapData, setMapData] = useState<ViewState>({
