@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './tailwind.css';
-import Container from './components/Container';
-import Map from './components/Map';
+import Map from './containers/UseRamps';
 import { Anchor } from 'react-feather';
 import LoadRamps from './containers/LoadRamps';
 
@@ -18,9 +17,7 @@ class App extends Component {
           <Anchor color="#9f7aea" /><p className="pl-3 text-lg font-semibold text-gray-200">Boat Ramps AAS</p>
         </header>
         <LoadRamps> 
-          <Container>
-            <Map />
-          </Container>
+          <Map />
         </LoadRamps>
       </div>
     );

@@ -1,5 +1,5 @@
 import React, { useEffect, Fragment } from 'react';
-import { connect, DispatchProp } from 'react-redux';
+import { connect } from 'react-redux';
 import { loadingData, loadingDataError, saveData} from '../redux/data/actions';
 import { Dispatch } from 'redux';
 
