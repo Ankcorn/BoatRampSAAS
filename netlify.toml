@@ -1,0 +1,7 @@
+[Settings]
+ID = "Boat Ramps AAS"
+
+[build]
+  base = ""
+  publish = "build"
+  command = "npm run build"
