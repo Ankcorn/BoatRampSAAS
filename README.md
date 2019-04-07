@@ -1,6 +1,6 @@
 # Boat Ramp AAS
 
-To view this demo go to [https://gallant-darwin-b5858a.netlify.com/](https://gallant-darwin-b5858a.netlify.com/)
+To view this demo go to [https://boatrampsaas.netlify.com/](https://boatrampsaas.netlify.com/)
 
 Before you start developing make sure you install all the dependencies:
 
