@@ -1,4 +1,4 @@
-import data from './boat_ramps.geojson';
+import data from './data/boat_ramps.geojson';
 
 export async function handler(event, context) {
   return {
