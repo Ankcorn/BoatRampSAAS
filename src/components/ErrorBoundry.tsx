@@ -15,7 +15,7 @@ class ErrorBoundry extends React.Component<any, State> {
   }
   render() {
     return (
-      <div className="flex flex-grow w-full m-4">
+      <div className="flex flex-grow justify-around w-full m-4">
         {!this.state.hasError ? this.props.children : <p>I'm super sad that something broke. Please forgive me!<br />
           If you need to look at cute pictures to feel better visit <strong><a href="https://www.redditp.com/r/aww">aww</a></strong></p>
         }

@@ -4,7 +4,9 @@ import Map from './containers/UseRamps';
 import { Anchor } from 'react-feather';
 import LoadRamps from './containers/LoadRamps';
 import ErrorBoundry from './components/ErrorBoundry';
-
+import Charts from './containers/Charts';
+import TypesChart from './components/BarChart';
+import { RampState } from './redux/ramps/types'; 
 class App extends Component {
   render() {
     return (
@@ -15,6 +17,17 @@ class App extends Component {
         <ErrorBoundry>
           <LoadRamps> 
             <Map />
+            <Charts
+              render={(data:RampState) => 
+                <TypesChart data={data.length > 0 && data.reduce((sum, el) => {
+                    return {
+                      labels: Array.from(new Set([ ...sum.labels, el.properties.material ]))
+                    }
+                }, {
+                  labels: [] as String[]
+                })} />
+              }
+            />
           </LoadRamps>
         </ErrorBoundry>
       </div>

@@ -8,7 +8,6 @@ const initialData: DataState = {
 }
 
 const data = (state = initialData, action: DataActionTypes): DataState => {
-  console.log(action);
   switch (action.type) {
     case DATA_DELETED:
       return initialData;

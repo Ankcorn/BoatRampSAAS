@@ -4,7 +4,6 @@ import { parseCoordinates } from '../../utils';
 const initialData: RampState = []
 
 const ramps = (state = initialData, action: RampActionTypes): RampState => {
-  console.log(action);
   switch (action.type) {
     case ADD_INITIAL_RAMPS:
       return action.payload.features.map((feature:Ramp) => ({
