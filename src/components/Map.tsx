@@ -33,15 +33,15 @@ const Map: React.FunctionComponent<Props> = ({ data }) => {
   }, [data]);
 
   return (
-    <div ref={ref} className="absolute rounded h-full w-full shadow-lg overflow-hidden m-5 ">
+    <div ref={ref} className="rounded h-full w-3/5 shadow-lg">
       <ReactMapGL
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
         latitude={mapData.latitude}
         longitude={mapData.longitude}
         zoom={mapData.zoom}
         mapStyle={mapStyle}
-        width={size.width - 40}
-        height={size.height - 100}
+        width={size.width}
+        height={size.height}
         onViewportChange={(viewport: ViewState) => {
           setMapData({ ...viewport })
         }
