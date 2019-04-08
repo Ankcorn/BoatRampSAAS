@@ -5,6 +5,7 @@ import { fromJS } from 'immutable';
 import { useRef } from 'react';
 import useComponentSize from '@rehooks/component-size';
 import { Anchor } from 'react-feather'
+import { Ramp } from '../redux/ramps/types';
 interface Props {
   data: any
 }
@@ -22,7 +23,7 @@ const Map: React.FunctionComponent<Props> = ({ data }) => {
   });
 
   useEffect(() => {
-    
+
     // if (data) {
     //   setMapStyle(mapStyle
     //     .setIn(['sources', 'ramps'], fromJS({ type: 'geojson', data }))
@@ -32,30 +33,31 @@ const Map: React.FunctionComponent<Props> = ({ data }) => {
   }, [data]);
 
   return (
-      <div ref={ref} className="absolute rounded h-full w-full shadow-lg overflow-hidden m-5 ">
-        <ReactMapGL
-          mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
-          latitude={mapData.latitude}
-          longitude={mapData.longitude}
-          zoom={mapData.zoom}
-          mapStyle={mapStyle}
-          width={size.width-40}
-          height={size.height-100}
-          onViewportChange={(viewport: ViewState) => {
-            setMapData({ ...viewport })
-          }
-          }
-        >
-        {data && data.features.map((feature: any, index: number) => (
-          <Marker 
-            key={`marker-${index}`}
-            longitude={feature.geometry.coordinates[0][0][0][0]}
-            latitude={feature.geometry.coordinates[0][0][0][1]} >
+    <div ref={ref} className="absolute rounded h-full w-full shadow-lg overflow-hidden m-5 ">
+      <ReactMapGL
+        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
+        latitude={mapData.latitude}
+        longitude={mapData.longitude}
+        zoom={mapData.zoom}
+        mapStyle={mapStyle}
+        width={size.width - 40}
+        height={size.height - 100}
+        onViewportChange={(viewport: ViewState) => {
+          setMapData({ ...viewport })
+        }
+        }
+      >
+        {data && data.map((feature: Ramp, index: number) => (
+          !Array.isArray(feature.geometry.coordinates) && // Checks data is parsed before plotting
+            <Marker
+              key={`marker-${index}`}
+              longitude={feature.geometry.coordinates.longitude}
+              latitude={feature.geometry.coordinates.latitude} >
               <Anchor color="#9f7aea" size={20} />
-          </Marker>
+            </Marker>
         ))}
-        </ReactMapGL>
-      </div>
+      </ReactMapGL>
+    </div>
   )
 }
 

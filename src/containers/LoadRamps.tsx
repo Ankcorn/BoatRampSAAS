@@ -1,6 +1,7 @@
 import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { loadingData, loadingDataError, saveData} from '../redux/data/actions';
+import { sanitiseData } from '../redux/ramps/actions';
 import { Dispatch } from 'redux';
 
 interface Props {
@@ -21,6 +22,7 @@ async function loadRampData(dispatch: Dispatch): Promise<void> {
     const data = await fetch('/.netlify/functions/ramps');
     const json = await data.json();
     dispatch(saveData(json));
+    dispatch(sanitiseData(json));
   } catch (e) {
     dispatch(loadingDataError());
     throw e

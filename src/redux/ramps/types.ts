@@ -1,8 +1,8 @@
 export const ADD_INITIAL_RAMPS = 'ADD_INITIAL_RAMPS';
 
 export interface Coordinates {
-  latitude: Number,
-  longitude: Number
+  latitude: number,
+  longitude: number
 }
 
 export type RawCoordinates = [[[number[]]]]

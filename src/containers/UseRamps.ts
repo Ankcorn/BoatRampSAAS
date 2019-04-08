@@ -4,7 +4,7 @@ import { State } from '../redux/store';
 
 function mapStateToProps(state: State) {
   return {
-    data: state.data.raw && state.data.raw
+    data: state.ramps
   }
 }
 
