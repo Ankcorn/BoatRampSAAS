@@ -4,7 +4,7 @@ import { dataLayer, defaultMapStyle } from '../maps';
 import { fromJS } from 'immutable';
 import { useRef } from 'react';
 import useComponentSize from '@rehooks/component-size';
-import { Octagon} from 'react-feather'
+import { Anchor } from 'react-feather'
 interface Props {
   data: any
 }
@@ -51,7 +51,7 @@ const Map: React.FunctionComponent<Props> = ({ data }) => {
             key={`marker-${index}`}
             longitude={feature.geometry.coordinates[0][0][0][0]}
             latitude={feature.geometry.coordinates[0][0][0][1]} >
-            <Octagon color="#9f7aea" size={10} />
+              <Anchor color="#9f7aea" size={20} />
           </Marker>
         ))}
         </ReactMapGL>
