@@ -8,7 +8,11 @@ Before you start developing make sure you install all the dependencies:
 > yarn
 ```
 
-then simply run the project
+Create a .env file with your mapbox token
+```
+REACT_APP_MAPBOX="magic mapbox token"
+```
+then run the project
 
 ```
 > yarn start
@@ -20,11 +24,13 @@ The project contains a data set describing the location and metadata of boat ram
 
 It is a standard [GeoJSON](http://geojson.org/) file, with each feature consisting of a `geometry` and `properties`, such as owner, material that the ramp is made of, etc.
 
-## The challenge
+To load it in I have turned it into a ts file and it is served as a response to requests to the ramps lambda
+
+## Features
 
 Your goal is to build a React and Redux-based UI to explore this data. The interface should have the following features:
 
-1. A map to be able to visualise all the boat ramps.
+1. A map to be able to visualise all the boat ramps.[x]
 2. A data visualisation of your choice that displays the number or ramps per construction material.
 3. A data visualisation of your choice that displays the number of ramps per size category (values of `area` in 3 different ranges: `[0, 50)`, `[50, 200)`, and `[200, 526)`).
 4. Zooming in the map should filter the visualised data to include only those ramps which are currently visible in the viewport.
