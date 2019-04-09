@@ -13,25 +13,25 @@ enum Type {
 
 export interface Ramp {
   type: Type,
-  id: String,
+  id: string,
   geometry: {
-      type: String,
+      type: string,
       coordinates: Coordinates | RawCoordinates
   },
-  geometry_name: String,
+  geometry_name: string,
   properties: {
-      rec_id: Number,
-      status: String,
-      asset_numb: String,
-      type: String,
-      material: String,
-      number_lan: Number,
-      add_improv: String,
-      top_rl: Number,
-      toe_rl: Number,
-      area_: Number,
-      comments: String,
-      documents: String,
+      rec_id: number,
+      status: string,
+      asset_numb: string,
+      type: string,
+      material: string,
+      number_lan: number,
+      add_improv: string,
+      top_rl: number,
+      toe_rl: number,
+      area_: number,
+      comments: string,
+      documents: string,
       inspectors: any,
       inspection: Date,
       constructi: any,
@@ -39,24 +39,24 @@ export interface Ramp {
       last_updat: any,
       update_dat: Date,
       disposal_d: any,
-      positional: String,
+      positional: string,
       level_accu: any,
-      owner: Number,
+      owner: number,
       project_nu: any,
       file_numbe: any,
       folder_num: any,
       drawing_nu: any,
       survey_num: any,
-      condition: Number,
-      historic_c: Number,
-      funding_ba: String,
-      mi_symbolo: String,
-      mi_prinx: Number,
+      condition: number,
+      historic_c: number,
+      funding_ba: string,
+      mi_symbolo: string,
+      mi_prinx: number,
       createuser: any,
       createdate: any,
       updateuser: any,
       updatedate: any,
-      shape_leng: Number,
+      shape_leng: number,
       shape_area: Number
   }
 }
@@ -65,7 +65,11 @@ export type RampState = Ramp[]
 
 interface AddInitialRampsAction {
   type: typeof ADD_INITIAL_RAMPS,
-  payload: any 
+  payload: any,
+  top: number,
+  bottom: number,
+  right: number,
+  left: number
 }
 
 export type RampActionTypes = AddInitialRampsAction;

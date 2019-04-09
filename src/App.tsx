@@ -5,8 +5,12 @@ import { Anchor } from 'react-feather';
 import LoadRamps from './containers/LoadRamps';
 import ErrorBoundry from './components/ErrorBoundry';
 import Charts from './containers/Charts';
-import TypesChart from './components/BarChart';
+import TypesChart, { PiChartData } from './components/BarChart';
 import { RampState } from './redux/ramps/types'; 
+
+interface Render {
+  PiData: PiChartData
+}
 class App extends Component {
   render() {
     return (
@@ -18,14 +22,8 @@ class App extends Component {
           <LoadRamps> 
             <Map />
             <Charts
-              render={(data:RampState) => 
-                <TypesChart data={data.length > 0 && data.reduce((sum, el) => {
-                    return {
-                      labels: Array.from(new Set([ ...sum.labels, el.properties.material ]))
-                    }
-                }, {
-                  labels: [] as String[]
-                })} />
+              render={({ PiData }: Render) => 
+                <TypesChart data={PiData} />
               }
             />
           </LoadRamps>

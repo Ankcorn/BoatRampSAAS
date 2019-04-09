@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import ReactMapGL, { ViewState, Marker } from 'react-map-gl';
-import { dataLayer, defaultMapStyle } from '../maps';
-import { fromJS } from 'immutable';
+import { defaultMapStyle } from '../maps';
+import { connect } from 'react-redux';
 import { useRef } from 'react';
 import useComponentSize from '@rehooks/component-size';
 import { Anchor } from 'react-feather'
 import { Ramp } from '../redux/ramps/types';
+import { updateMap } from '../redux/map/actions';
+import { Dispatch } from 'redux';
+import { sanitiseData } from '../redux/ramps/actions';
 interface Props {
-  data: any
+  data: any,
+  updateMap: Function,
 }
-const Map: React.FunctionComponent<Props> = ({ data }) => {
-  let ref = useRef(null)
-  let size = useComponentSize(ref)
-  const [mapStyle, setMapStyle] = useState(defaultMapStyle);
 
+const Map: React.FunctionComponent<Props> = ({ data, updateMap }) => {
+  let ref = useRef(null)
+  let size = useComponentSize(ref);
+  const [mapStyle] = useState(defaultMapStyle);
+  
   const [mapData, setMapData] = useState<ViewState>({
     latitude: -28,
     longitude: 153.4,
@@ -21,16 +26,6 @@ const Map: React.FunctionComponent<Props> = ({ data }) => {
     bearing: 0,
     pitch: 0
   });
-
-  useEffect(() => {
-
-    // if (data) {
-    //   setMapStyle(mapStyle
-    //     .setIn(['sources', 'ramps'], fromJS({ type: 'geojson', data }))
-    //     .set('layers', defaultMapStyle.get('layers').push(dataLayer)));
-    //     console.log(data)
-    // }
-  }, [data]);
 
   return (
     <div ref={ref} className="rounded h-full w-3/5 shadow-lg">
@@ -44,6 +39,16 @@ const Map: React.FunctionComponent<Props> = ({ data }) => {
         height={size.height}
         onViewportChange={(viewport: ViewState) => {
           setMapData({ ...viewport })
+          // This needs a lot more thought
+          // const bounds = mapRef.getMap().getBounds()
+          // sanitiseData(
+          //   { features: data},
+          //   bounds._ne.lat,
+          //   bounds._sw.lat,
+          //   bounds._sw.lng,
+          //   bounds._ne.lng
+          // )
+          updateMap(viewport)
         }
         }
       >
@@ -61,4 +66,10 @@ const Map: React.FunctionComponent<Props> = ({ data }) => {
   )
 }
 
-export default Map;
+function mapDispatchToProps(dispatch: Dispatch) {
+  return {
+    updateMap: (data:ViewState) => dispatch(updateMap(data)),
+    sanitiseData: (data:any, top: number, bottom: number, right: number, left: number) => dispatch(sanitiseData(data, top, bottom, right, left))
+  }
+}
+export default connect(null, mapDispatchToProps)(Map);
